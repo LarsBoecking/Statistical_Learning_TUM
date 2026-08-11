@@ -1,0 +1,34 @@
+
+# data handling 
+pyYAML
+numpy
+pandas
+tqdm
+lxml
+joblib
+
+# statistics
+scipy
+statsmodels
+lifelines
+pygam
+l0bnb
+
+# models
+torch
+scikit-learn
+torchvision
+pytorch-lightning
+torchinfo
+torchmetrics
+ISLP
+
+# plotting and visualization
+matplotlib
+seaborn
+ipywidgets
+geopandas 
+geodatasets
+
+
+

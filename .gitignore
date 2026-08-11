@@ -1,0 +1,48 @@
+# ---------------------------------------------------------------------------
+# Statistical Learning course repository
+# ---------------------------------------------------------------------------
+
+# PowerPoint sources are edited locally and NOT published.
+# Only the exported lecture PDFs (01_Lectures/*.pdf) are tracked.
+*.pptx
+*.potx
+~$*.pptx
+
+# Exercise solutions stay private during the course.
+# Students receive only the blank exercise notebooks.
+*_Solution.ipynb
+
+# Python / Jupyter
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+*.egg-info/
+.mypy_cache/
+.pytest_cache/
+.python-version
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Figures now live in per-slide subfolders (NN_figures/NN_topic/). The old flat
+# copies at the root of each NN_figures folder are superseded; ignore them so
+# only the organized subfolders are tracked. (Safe to delete the flat files.)
+02_lectures_code/*_figures/*.pdf
+02_lectures_code/*_figures/*.gif
+
+# ---------------------------------------------------------------------------
+# Optional: the neural-network figure set (02_lectures_code/06_figures) holds
+# ~37 MB of frame-by-frame animation PDFs that are fully reproducible from
+# 06.ipynb. Uncomment the block below to keep them out of the repository and
+# regenerate them on demand.
+# ---------------------------------------------------------------------------
+# 02_lectures_code/06_figures/15_training_animation/
+# 02_lectures_code/06_figures/35_loss_surface/
+# 02_lectures_code/06_figures/loss_surface/
+# 02_lectures_code/06_figures/39_sgd_minibatch/
+# 02_lectures_code/06_figures/40_momentum/
+# 02_lectures_code/06_figures/41_adam/
