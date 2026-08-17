@@ -1,9 +1,14 @@
 """Shared figure utilities for the Statistical Learning lecture notebooks.
 
 Figures use paper-style numbering ``Fig. <lecture>.<number>``. Each figure is
-saved as a loss-free PDF into a per-figure folder::
+saved loss-free as both a PDF and an SVG into a per-figure folder::
 
     <code_root>/<LL>_figures/<L.N>_<name>/<L.N>_<name>[_<variant>].pdf
+    <code_root>/<LL>_figures/<L.N>_<name>/<L.N>_<name>[_<variant>].svg
+
+The PDF is the master for print, archival, and the website. The SVG is for
+slides: PowerPoint for Mac renders SVG as true vector, while it rasterises EMF
+and PDF, so SVG is what keeps figures sharp in the deck.
 
 ``<code_root>`` is the ``02_lectures_code`` directory, i.e. the parent of the
 ``src`` folder that holds this module. Numbering is independent of slide order,
@@ -45,10 +50,21 @@ BLUE="#006BA4"; ORANGE="#FF800E"; GRAY="#ABABAB"; DARK="#595959"; GREEN="#2C8A3B
 DIS_COL={"Earthquake":"#C0392B","Flood":"#2C6FA6","Storm":"#27AE60","Volcanic activity":"#E67E22"}
 
 
+# Formats written by ``save_figure`` when no explicit ``ext`` is requested.
+# PDF stays the loss-free master for print, archival, and the website; SVG is
+# the format PowerPoint for Mac renders as true vector (EMF and PDF get
+# rasterised there, SVG does not).
+DEFAULT_FORMATS: tuple[str, ...] = ("pdf", "svg")
+
+
 def use_style() -> None:
     """Apply the shared matplotlib style used across all lectures."""
     if os.path.exists(_STYLE_PATH):
         plt.style.use(_STYLE_PATH)
+    # Embed figure text as vector outlines in SVG output. The exported figure
+    # then looks identical in PowerPoint and Keynote even when the original
+    # fonts are missing, and stays fully lossless.
+    plt.rcParams["svg.fonttype"] = "path"
 
 
 def _slugify(text: str) -> str:
@@ -118,7 +134,8 @@ def save_figure(
     variant: Optional[str] = None,
     *,
     fig: Optional[Figure] = None,
-    ext: str = "pdf",
+    ext: Optional[str] = None,
+    formats: Optional[tuple[str, ...]] = None,
     close: bool = False,
     verbose: bool = True,
     **savefig_kwargs,
@@ -147,13 +164,26 @@ def save_figure(
         Absolute path of the written file.
     """
     fig = fig if fig is not None else plt.gcf()
-    path = figure_path(lecture, number, name, variant, ext)
-
     savefig_kwargs.setdefault("bbox_inches", "tight")
-    fig.savefig(path, **savefig_kwargs)
+
+    # Decide which formats to write. An explicit ``ext`` writes just that one
+    # (used for non-figure outputs such as animation GIFs); otherwise write the
+    # ``formats`` list, defaulting to PDF + SVG.
+    if ext is not None:
+        out_formats = (ext,)
+    else:
+        out_formats = tuple(formats) if formats is not None else DEFAULT_FORMATS
+
+    paths = []
+    for fmt in out_formats:
+        path = figure_path(lecture, number, name, variant, fmt)
+        fig.savefig(path, **savefig_kwargs)
+        paths.append(path)
+        if verbose:
+            rel = os.path.relpath(path, CODE_ROOT)
+            print(f"Saved Fig. {lecture}.{number} -> {rel}")
+
     if close:
         plt.close(fig)
-    if verbose:
-        rel = os.path.relpath(path, CODE_ROOT)
-        print(f"Saved Fig. {lecture}.{number} -> {rel}")
-    return path
+    # Return the first path (PDF by default) so existing callers keep working.
+    return paths[0]
