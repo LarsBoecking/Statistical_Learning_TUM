@@ -31,8 +31,8 @@ A landing page walking through every lecture is published with GitHub Pages from
 ## Getting started
 
 ```bash
-git clone https://github.com/LarsBoecking/Statistical_Learning_TUM.git
-cd Statistical_Learning_TUM
+git clone <repository-url> statistical-learning
+cd statistical-learning
 
 python -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
