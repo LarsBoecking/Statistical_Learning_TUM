@@ -16,8 +16,7 @@ A landing page walking through every lecture is published with GitHub Pages from
 ## Repository layout
 
 ```
-.
-├── 01_Lectures/          Lecture slides. Only the exported PDFs are tracked; the .pptx sources stay local.
+├── 01_Lectures/          Lecture slides. Only the exported PDFs are tracked. The .pptx sources stay local.
 ├── 02_lectures_code/     One notebook per lecture that regenerates all of its figures.
 │   ├── NN_figures/        Generated figures (PDF + SVG); not tracked — rebuilt by scripts/build_all.sh.
 │   ├── scripts/           Build pipeline: generate_figures, export_pdfs, upscale_images_pdf, build_all.
@@ -26,7 +25,6 @@ A landing page walking through every lecture is published with GitHub Pages from
 │                          Worked *_Solution.ipynb notebooks are kept private (see .gitignore).
 ├── configs/              Shared Matplotlib style (visualisations.mplstyle).
 ├── data/                 The disaster dataset used across all notebooks.
-├── docs/                 The GitHub Pages site (landing page + one page per lecture).
 └── requirements.txt      Python dependencies.
 ```
 
@@ -89,36 +87,6 @@ The first export run triggers a one-time macOS prompt to let your terminal
 control PowerPoint. The upscale step lists every figure it replaced, so you can
 confirm each slide picked up the figure you expected.
 
-## Publishing the landing page
-
-The site is a static, dependency-free set of HTML pages in `docs/`.
-
-1. Push this repository to <https://github.com/LarsBoecking/Statistical_Learning_TUM>.
-2. `docs/assets/js/config.js` is already set to `user: LarsBoecking`, `repo: Statistical_Learning_TUM`,
-   `branch: main`. Every "View slides", "Open exercise", and "Figure notebook" link is built from these
-   three values, so this is the only place to edit if the repository ever moves.
-3. In the repository, go to **Settings → Pages**, set the source to **Deploy from a branch**, choose
-   the `main` branch and the **`/docs`** folder, and save.
-4. The site appears at <https://larsboecking.github.io/Statistical_Learning_TUM/>.
-
-Because Pages serves only the `docs/` folder, slide PDFs and notebooks are linked back to the files in
-the repository rather than copied into the site.
-
-## What is and is not tracked
-
-The `.gitignore` keeps the repository focused on shareable material:
-
-- PowerPoint sources (`*.pptx`) are excluded; only the exported lecture PDFs are tracked.
-- Generated figures (`02_lectures_code/*_figures/`) are excluded — they are rebuilt from the
-  notebooks by `scripts/build_all.sh`, so a fresh clone runs that once to recreate them. This keeps
-  the repository lean (the neural-network animation frames alone are ~37 MB).
-- Exercise solutions (`*_Solution.ipynb`) are excluded so students receive only the blank exercises.
-- Editor, OS, and Python caches are excluded.
-
-## Slides on the site
-
-`00_Intro` is used only with students attending in person and is intentionally left off the site.
-All six lectures (01–06) are published with their slides and figures.
 
 ## Credits
 
