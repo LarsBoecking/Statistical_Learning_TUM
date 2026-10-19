@@ -33,9 +33,10 @@
       <figure><img src="../assets/img/gallery/04__4.3_logistic_fit.png" alt="logistic fit" loading="lazy"><figcaption>Fig. 4.3 &middot; logistic fit</figcaption></figure>
       <figure><img src="../assets/img/gallery/04__4.4_class_prior.png" alt="class prior" loading="lazy"><figcaption>Fig. 4.4 &middot; class prior</figcaption></figure>
       <figure><img src="../assets/img/gallery/04__4.5_multivariate.png" alt="multivariate" loading="lazy"><figcaption>Fig. 4.5 &middot; multivariate</figcaption></figure>
+      <figure><img src="../assets/img/gallery/04__4.6_discriminant_assumptions.png" alt="discriminant assumptions" loading="lazy"><figcaption>Fig. 4.6 &middot; discriminant assumptions</figcaption></figure>
     </div>
   </section>
-  <div class="pager"><a href="03-regression.html">← Lecture 03</a><a href="../index.html">All lectures</a><a href="05-decision-trees.html">Lecture 05 →</a></div>
+  <div class="pager"><a href="03-regression.html">← Lecture 03</a><a href="../index.html">All lectures</a><a href="05-neural-networks.html">Lecture 05 →</a></div>
   <section class="foot">
     <div><h4>About the course</h4><p>Statistical Learning (FIM), WI001287, TUM School of Management. Content developed by Lars Böcking.</p></div>
     <div><h4>Course</h4><p><a href="https://www.moodle.tum.de/course/view.php?id=114373" target="_blank" rel="noopener">Moodle · WI001287</a><br><a data-repo-home href="#">Repository</a></p></div>
@@ -44,7 +45,7 @@
 </div>
 <script>
 (function(){
-  var NN="04", PAGES=34, SUBS=[["Introduction & recap", 1], ["Logistic regression", 11], ["Linear discriminant analysis", 15], ["Quadratic discriminant analysis", 21], ["Naïve Bayes", 25]], pad=function(n){return String(n).padStart(2,'0');};
+  var NN="04", PAGES=39, SUBS=[["Introduction", 1], ["Logistic Regression", 10], ["Linear Discriminant Analysis", 15], ["Quadratic Discriminant", 22], ["Naive Bayes", 27]], pad=function(n){return String(n).padStart(2,'0');};
   var subsBox=document.getElementById('subs'), slidesBox=document.getElementById('slides');
   if(!PAGES){
     slidesBox.style.height='auto';
@@ -62,7 +63,7 @@
   for(var p=1;p<=PAGES;p++){
     if(starts[p]) htmlp+='<div class="lchapter" id="s'+p+'">'+starts[p]+'</div>';
     var anchor = starts[p] ? '' : ' id="s'+p+'"';
-    htmlp+='<figure class="lslide"'+anchor+' data-page="'+p+'"><img loading="lazy" src="../slides/'+NN+'/p-'+pad(p)+'.svg?v=20260812" alt="Slide '+p+'"></figure>';
+    htmlp+='<figure class="lslide"'+anchor+' data-page="'+p+'"><img loading="lazy" src="../slides/'+NN+'/p-'+pad(p)+'.svg?v=20261019" alt="Slide '+p+'"></figure>';
   }
   slidesBox.innerHTML=htmlp;
   function subOf(page){var cur=SUBS[0][1]; SUBS.forEach(function(s){if(page>=s[1]) cur=s[1];}); return cur;}

@@ -19,12 +19,14 @@ A landing page walking through every lecture is published with GitHub Pages from
 ├── 01_Lectures/          Lecture slides. Only the exported PDFs are tracked. The .pptx sources stay local.
 ├── 02_lectures_code/     One notebook per lecture that regenerates all of its figures.
 │   ├── NN_figures/        Generated figures (PDF + SVG); not tracked — rebuilt by scripts/build_all.sh.
-│   ├── scripts/           Build pipeline: generate_figures, export_pdfs, upscale_images_pdf, build_all.
+│   ├── scripts/           Build pipeline: generate_figures, export_pdfs, upscale_images_pdf, build_site, build_all.
 │   └── src/               Shared Python helpers imported by the notebooks (figures.py, data_loader.py, ...).
 ├── 03_exercises_code/    One folder per session with the student exercise notebook.
 │                          Worked *_Solution.ipynb notebooks are kept private (see .gitignore).
+├── 04_exam/              Sample exam questions and their solution.
 ├── configs/              Shared Matplotlib style (visualisations.mplstyle).
 ├── data/                 The disaster dataset used across all notebooks.
+├── docs/                 The GitHub Pages site (landing page, one page per lecture, slide SVGs, figure gallery).
 └── requirements.txt      Python dependencies.
 ```
 
@@ -55,7 +57,7 @@ vector on screen.
 PowerPoint for Mac rasterises SVG and EMF figures when it exports to PDF, which
 softens them, and there is no export setting that prevents it. The pipeline in
 `02_lectures_code/scripts/` fixes this without changing how you present. It runs
-in three steps, each runnable on its own or together via `build_all.sh`:
+in four steps, each runnable on its own or together via `build_all.sh`:
 
 - `generate_figures.sh` — executes every lecture notebook so each figure is
   written as PDF + SVG into `NN_figures/`. A fresh clone runs this first, since
@@ -70,17 +72,23 @@ in three steps, each runnable on its own or together via `build_all.sh`:
   identified against `NN_figures/` by content hash, falling back to appearance
   matching (via `overlay_vector_figures.py`) for figures PowerPoint re-encoded on
   insert, and reported as `lecture / slide / figure`.
+- `build_site.py` — refreshes the GitHub Pages site in `docs/`: renders each
+  lecture PDF into per-slide SVGs, takes the subchapter list from the
+  PowerPoint *sections* of the deck, renders one gallery image per figure
+  folder, and updates the lecture pages accordingly. Keep the sections in
+  PowerPoint tidy, since they become the navigation on the site.
 
 ```bash
 pip install pypdf svglib pymupdf pillow numpy   # one-time, all pure-Python
 
-# Everything from scratch: figures -> export -> lossless.
+# Everything from scratch: figures -> export -> lossless -> site.
 bash 02_lectures_code/scripts/build_all.sh
 
 # Or run any step on its own:
 bash 02_lectures_code/scripts/generate_figures.sh
 bash 02_lectures_code/scripts/export_pdfs.sh
 bash 02_lectures_code/scripts/upscale_images_pdf.sh
+python3 02_lectures_code/scripts/build_site.py
 ```
 
 The first export run triggers a one-time macOS prompt to let your terminal

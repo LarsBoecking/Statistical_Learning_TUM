@@ -44,7 +44,7 @@
 </div>
 <script>
 (function(){
-  var NN="01", PAGES=50, SUBS=[["Introduction & dataset", 1], ["AI & machine learning", 9], ["Variables & notation", 16], ["Descriptive statistics", 24], ["Bivariate statistics", 38], ["Probability theory", 43], ["Bayes' theorem", 49]], pad=function(n){return String(n).padStart(2,'0');};
+  var NN="01", PAGES=48, SUBS=[["Introduction", 1], ["Motivation", 6], ["Statistical Variables", 12], ["Descriptive Statistics", 21], ["Bivariate Statistics", 34], ["Probability Theory", 39], ["Bayes Theorem", 45]], pad=function(n){return String(n).padStart(2,'0');};
   var subsBox=document.getElementById('subs'), slidesBox=document.getElementById('slides');
   if(!PAGES){
     slidesBox.style.height='auto';
@@ -62,7 +62,7 @@
   for(var p=1;p<=PAGES;p++){
     if(starts[p]) htmlp+='<div class="lchapter" id="s'+p+'">'+starts[p]+'</div>';
     var anchor = starts[p] ? '' : ' id="s'+p+'"';
-    htmlp+='<figure class="lslide"'+anchor+' data-page="'+p+'"><img loading="lazy" src="../slides/'+NN+'/p-'+pad(p)+'.svg?v=20260812" alt="Slide '+p+'"></figure>';
+    htmlp+='<figure class="lslide"'+anchor+' data-page="'+p+'"><img loading="lazy" src="../slides/'+NN+'/p-'+pad(p)+'.svg?v=20261019" alt="Slide '+p+'"></figure>';
   }
   slidesBox.innerHTML=htmlp;
   function subOf(page){var cur=SUBS[0][1]; SUBS.forEach(function(s){if(page>=s[1]) cur=s[1];}); return cur;}

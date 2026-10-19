@@ -32,11 +32,14 @@
       <figure><img src="../assets/img/gallery/03__3.2_ols_fit.gif" alt="ols fit" loading="lazy"><figcaption>Fig. 3.2 &middot; ols fit</figcaption></figure>
       <figure><img src="../assets/img/gallery/03__3.3_rss_surface.png" alt="rss surface" loading="lazy"><figcaption>Fig. 3.3 &middot; rss surface</figcaption></figure>
       <figure><img src="../assets/img/gallery/03__3.4_standard_errors.gif" alt="standard errors" loading="lazy"><figcaption>Fig. 3.4 &middot; standard errors</figcaption></figure>
-      <figure><img src="../assets/img/gallery/03__3.5_dummy_variables.png" alt="dummy variables" loading="lazy"><figcaption>Fig. 3.5 &middot; dummy variables</figcaption></figure>
-      <figure><img src="../assets/img/gallery/03__3.6_interactions.png" alt="interactions" loading="lazy"><figcaption>Fig. 3.6 &middot; interactions</figcaption></figure>
-      <figure><img src="../assets/img/gallery/03__3.7_ridge.png" alt="ridge" loading="lazy"><figcaption>Fig. 3.7 &middot; ridge</figcaption></figure>
-      <figure><img src="../assets/img/gallery/03__3.8_lasso.png" alt="lasso" loading="lazy"><figcaption>Fig. 3.8 &middot; lasso</figcaption></figure>
-      <figure><img src="../assets/img/gallery/03__3.9_constraint_geometry.png" alt="constraint geometry" loading="lazy"><figcaption>Fig. 3.9 &middot; constraint geometry</figcaption></figure>
+      <figure><img src="../assets/img/gallery/03__3.5_confidence_band.png" alt="confidence band" loading="lazy"><figcaption>Fig. 3.5 &middot; confidence band</figcaption></figure>
+      <figure><img src="../assets/img/gallery/03__3.6_dummy_variables.png" alt="dummy variables" loading="lazy"><figcaption>Fig. 3.6 &middot; dummy variables</figcaption></figure>
+      <figure><img src="../assets/img/gallery/03__3.7_interactions.png" alt="interactions" loading="lazy"><figcaption>Fig. 3.7 &middot; interactions</figcaption></figure>
+      <figure><img src="../assets/img/gallery/03__3.8_ridge.png" alt="ridge" loading="lazy"><figcaption>Fig. 3.8 &middot; ridge</figcaption></figure>
+      <figure><img src="../assets/img/gallery/03__3.9_lasso.png" alt="lasso" loading="lazy"><figcaption>Fig. 3.9 &middot; lasso</figcaption></figure>
+      <figure><img src="../assets/img/gallery/03__3.10_constraint_geometry.png" alt="constraint geometry" loading="lazy"><figcaption>Fig. 3.10 &middot; constraint geometry</figcaption></figure>
+      <figure><img src="../assets/img/gallery/03__3.11_penalised_1d.png" alt="penalised 1d" loading="lazy"><figcaption>Fig. 3.11 &middot; penalised 1d</figcaption></figure>
+      <figure><img src="../assets/img/gallery/03__3.12_penalised_surface.png" alt="penalised surface" loading="lazy"><figcaption>Fig. 3.12 &middot; penalised surface</figcaption></figure>
     </div>
   </section>
   <div class="pager"><a href="02-statistical-learning.html">← Lecture 02</a><a href="../index.html">All lectures</a><a href="04-logistic-bayes.html">Lecture 04 →</a></div>
@@ -48,7 +51,7 @@
 </div>
 <script>
 (function(){
-  var NN="03", PAGES=43, SUBS=[["Introduction", 1], ["Simple linear regression", 5], ["Assessing coefficients", 10], ["Assessing the model", 16], ["Multiple linear regression", 22], ["Dummy variables & interactions", 34], ["Regularization", 38]], pad=function(n){return String(n).padStart(2,'0');};
+  var NN="03", PAGES=47, SUBS=[["Introduction", 1], ["Estimating the Coefficients", 3], ["Assessing Coefficient Estimates", 9], ["Assessing Model performance", 15], ["Multiple linear regression", 21], ["Extensions to Linear Regression", 31]], pad=function(n){return String(n).padStart(2,'0');};
   var subsBox=document.getElementById('subs'), slidesBox=document.getElementById('slides');
   if(!PAGES){
     slidesBox.style.height='auto';
@@ -66,7 +69,7 @@
   for(var p=1;p<=PAGES;p++){
     if(starts[p]) htmlp+='<div class="lchapter" id="s'+p+'">'+starts[p]+'</div>';
     var anchor = starts[p] ? '' : ' id="s'+p+'"';
-    htmlp+='<figure class="lslide"'+anchor+' data-page="'+p+'"><img loading="lazy" src="../slides/'+NN+'/p-'+pad(p)+'.svg?v=20260812" alt="Slide '+p+'"></figure>';
+    htmlp+='<figure class="lslide"'+anchor+' data-page="'+p+'"><img loading="lazy" src="../slides/'+NN+'/p-'+pad(p)+'.svg?v=20261019" alt="Slide '+p+'"></figure>';
   }
   slidesBox.innerHTML=htmlp;
   function subOf(page){var cur=SUBS[0][1]; SUBS.forEach(function(s){if(page>=s[1]) cur=s[1];}); return cur;}

@@ -33,7 +33,6 @@
       <figure><img src="../assets/img/gallery/02__2.3_joint_distribution.png" alt="joint distribution" loading="lazy"><figcaption>Fig. 2.3 &middot; joint distribution</figcaption></figure>
       <figure><img src="../assets/img/gallery/02__2.4_regression_metrics.png" alt="regression metrics" loading="lazy"><figcaption>Fig. 2.4 &middot; regression metrics</figcaption></figure>
       <figure><img src="../assets/img/gallery/02__2.5_train_test_split.png" alt="train test split" loading="lazy"><figcaption>Fig. 2.5 &middot; train test split</figcaption></figure>
-      <figure><img src="../assets/img/gallery/02__2.6_confidence_band.png" alt="confidence band" loading="lazy"><figcaption>Fig. 2.6 &middot; confidence band</figcaption></figure>
     </div>
   </section>
   <div class="pager"><a href="01-basics.html">← Lecture 01</a><a href="../index.html">All lectures</a><a href="03-regression.html">Lecture 03 →</a></div>
@@ -45,7 +44,7 @@
 </div>
 <script>
 (function(){
-  var NN="02", PAGES=33, SUBS=[["Introduction", 1], ["From business to ML", 4], ["Reducible & irreducible error", 9], ["Bias–variance trade-off", 14], ["Classification & regression", 19], ["Data splitting", 29]], pad=function(n){return String(n).padStart(2,'0');};
+  var NN="02", PAGES=32, SUBS=[["Introduction", 1], ["Estimating f", 4], ["Bias-Variance Trade Off", 13], ["Regression & Classification", 18], ["Train Test Split", 29]], pad=function(n){return String(n).padStart(2,'0');};
   var subsBox=document.getElementById('subs'), slidesBox=document.getElementById('slides');
   if(!PAGES){
     slidesBox.style.height='auto';
@@ -63,7 +62,7 @@
   for(var p=1;p<=PAGES;p++){
     if(starts[p]) htmlp+='<div class="lchapter" id="s'+p+'">'+starts[p]+'</div>';
     var anchor = starts[p] ? '' : ' id="s'+p+'"';
-    htmlp+='<figure class="lslide"'+anchor+' data-page="'+p+'"><img loading="lazy" src="../slides/'+NN+'/p-'+pad(p)+'.svg?v=20260812" alt="Slide '+p+'"></figure>';
+    htmlp+='<figure class="lslide"'+anchor+' data-page="'+p+'"><img loading="lazy" src="../slides/'+NN+'/p-'+pad(p)+'.svg?v=20261019" alt="Slide '+p+'"></figure>';
   }
   slidesBox.innerHTML=htmlp;
   function subOf(page){var cur=SUBS[0][1]; SUBS.forEach(function(s){if(page>=s[1]) cur=s[1];}); return cur;}
