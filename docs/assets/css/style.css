@@ -49,8 +49,8 @@ body.landing .hdr.show-logos .logos{opacity:1;transform:none;pointer-events:auto
 .hero .in{display:grid;grid-template-columns:1fr 1fr}
 .hero .l{padding:44px 40px 48px 0;border-right:1px solid var(--hair)}
 .hero .r{padding:56px 0 48px 40px;display:flex;flex-direction:column;justify-content:flex-end}
-#hero-logos{display:flex;gap:26px;align-items:center;margin-bottom:26px}
-#hero-logos img{height:54px;display:block}
+#hero-logos{display:flex;flex-wrap:wrap;gap:16px 22px;align-items:center;margin-bottom:26px}
+#hero-logos img{height:40px;display:block}
 .hero .mono{color:var(--tum)}
 .hero h1{font-size:4.6rem;line-height:.98;letter-spacing:-.04em;font-weight:700;margin:14px 0 0}
 .hero p{font-size:1.15rem;margin:0 0 16px;max-width:38ch}
@@ -169,7 +169,8 @@ p code,li code{background:#eef2f6;border:1px solid var(--hair);padding:1px 6px;b
 @media(max-width:900px){.cards{grid-template-columns:1fr 1fr}.exgrid{grid-template-columns:1fr 1fr}.lreader{grid-template-columns:1fr}.lreader .lside{height:auto;overflow:visible}.lslides{height:47vh}}
 @media(max-width:640px){
   .hero .in{grid-template-columns:1fr}.hero .l{border-right:0;padding-right:0}.hero .r{padding-left:0}.hero h1{font-size:3rem}
-  #hero-logos img{height:42px}
+  #hero-logos img{height:32px}
+  .hrow{grid-template-columns:1fr;gap:8px;padding:10px 16px}.hdr .logos{gap:10px}.hdr .logos img{height:22px}.hdr nav a{margin-left:0;margin-right:18px;font-size:.8rem}
   .cards,.exgrid{grid-template-columns:1fr}.foot{grid-template-columns:1fr}
   .step{grid-template-columns:1fr}
 }
