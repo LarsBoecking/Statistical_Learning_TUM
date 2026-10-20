@@ -4,6 +4,10 @@
   <img src="docs/assets/logos/tum.svg" alt="Technical University of Munich" height="46">
   &nbsp;&nbsp;&nbsp;&nbsp;
   <img src="docs/assets/logos/fhg.svg" alt="Fraunhofer" height="38">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="docs/assets/logos/fim.svg" alt="FIM Research Institute for Information Management" height="40">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="docs/assets/logos/ubt.svg" alt="University of Bayreuth" height="40">
 </p>
 
 Course material for **Statistical Learning**, a master's course at the TUM School of Management
